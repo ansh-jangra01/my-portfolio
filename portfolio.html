@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansh Jangra | Web Developer Portfolio</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        cursor: none !important;
+        }
+
+        body{
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at 80% 20%, #1c1810 0%, #070708 60%);
+            cursor: none;
+            padding-top: 90px;
+        }
+
+
+        /* for loading animation  */
+
+        #preloader{
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            height: 100%;
+            width: 100%;
+            background-color: #070708;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+        }
+
+        #preloader h2{
+            font-size: 26px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 2px;
+            animation: fadeInText 1.5s ease-in-out infinite alternate;
+        }
+
+        #preloader h2 span{
+            color: #d4af37;
+        }
+
+        .loading-spinner{
+            height: 50px;
+            width: 50px;
+            border: 3px solid #d4af37;
+            border-top-color: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0.5; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .hide-loader {
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+/* .................................................................... */
+
+        /* gearbox animation  */
+
+        .gearbox-container{
+            position: absolute;
+            top: 65%;
+            right: 5%;
+            display: block;
+            color: white;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            opacity: 0.25;
+            z-index: 6;
+        }
+
+        .gearbox-container i{
+            position: absolute;
+            color: #d4af37;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        .gear-large{
+            font-size: 110px;
+            top: 67px;
+            left: 22px;
+            animation: spinClockwise 6s linear infinite;
+        }
+
+        .gear-small{
+            font-size: 75px;
+            left: 115px;
+            top: 51px;
+            animation: spinCounterclockwise 4s linear infinite;
+        }
+
+        @keyframes spinClockwise{
+            from{transform: rotate(0deg); }
+            to{transform: rotate(-360deg);}
+        }
+
+        @keyframes spinCounterclockwise{
+            from{transform: rotate(0deg); }
+            to{transform: rotate(360deg);}
+        }
+
+        /* .............................................................. */
+
+
+
+        /* code universe animation   */
+
+        .profile-3d{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 0 0 42%;
+            gap: 25px;
+        }
+
+        .code-universe{
+            height: 340px;
+            width: 340px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-core{
+            height: 125px;
+            width: 125px;
+            background: radial-gradient(circle at 30% 25%, #f8efc6, #a18731 45%, #2c1f05 100% );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 0 12px 2px #6e6e6e;
+            z-index: 5;
+        }
+
+        .code-core i{
+            font-size: 55px;
+            color: #362d17;
+        }
+
+        .orbit{
+            position: absolute;
+            height: 120px;
+            width: 270px;
+            border: 1.5px solid #d4af37;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #d4af3730;
+        }
+
+        .orbit-one{
+            animation: orbitOne 12s linear infinite;
+        }
+
+        .orbit-two{
+            height: 320px;
+            width: 150px;
+            animation: orbitTwo 15s linear infinite;
+        }
+
+        .orbit-three{
+            height: 230px;
+            width: 230px;
+            border-color: #f5d77b80;
+            animation: orbitThree 10s linear infinite;
+        }
+
+        .tech-node{
+            position: absolute;
+            top: 0;
+            padding: 8px 15px;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            font-size: 11px;
+            color: #f5d77b;
+            font-weight: 600;
+            background: #111;
+            letter-spacing: 2px;
+            z-index: 6;
+        }
+
+        .node-html{
+            top: 20px;
+            left: 35px;
+            animation: nodeFloat 3s ease-in-out infinite;
+        }
+
+        .node-css{
+            top: 55px;
+            right: 5px;
+            animation: nodeFloat 3s ease-in-out infinite;
+        }
+
+        .node-js{
+            top: 75%;
+            left: 15px;
+            animation: nodeFloat 3s ease-in-out infinite;
+        }
+
+        .node-react{
+            top: 80%;
+            left: 78%;
+            animation: nodeFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes orbitOne {
+            from{transform: rotate(35deg); }
+            to{transform: rotate(395deg);}
+        }
+        
+        @keyframes orbitTwo{
+            from{transform: rotate(-45deg); }
+            to{transform: rotate(-405deg);}
+        }
+
+        @keyframes orbitThree{
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+
+        @keyframes nodeFloat {
+            0%, 100%{translate: 0 0; }
+            50%{translate: 0 -10px;}
+        }
+
+        /* .........................................................  */
+
+
+
+
+        header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            color: white;
+            z-index: 30;
+        }
+
+        .userName h3{
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .navlinks{
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-right: 35px;
+            background: rgb(27, 26, 26);
+            padding: 12px 30px;
+            border-radius: 12px;
+        }
+
+        .navlinks a{
+            position: relative;
+            color: #b6b5b5;
+            font-size: 15px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .navlinks a::after{
+            content: "";
+            position: absolute;
+            top: 29px;
+            right: 0;
+            background-color: #d4af37b0;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease-in-out;
+            transform-origin: left;
+        }
+
+        .navlinks a.active::after{
+            transform: scale(1);
+        }
+        
+
+        .navlinks a:hover::after{
+            transform: scaleX(1);
+        }
+        
+        .My-intro{
+            display: flex;
+            align-items: center;
+            padding: 30px 60px;
+            height: 100%;
+            width: 100%;
+            gap: 120px;
+            margin-bottom: 50px;
+        }
+
+        .my-pfp{
+            position: relative;
+            height: 580px;
+            width: 580px;
+            background-position: center;
+        }
+
+        .my-pfp img{
+            height: 580px;
+            width: 580px;
+            background-position: center;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 40%;
+            border: 4px solid rgba(212, 175, 55, 0.4);
+            cursor: pointer;
+        }
+
+        .intro-text{
+            max-width: 55%;
+        }
+        
+        .intro-text h1{
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: #ffffff;
+        }
+        
+        .intro-text h1 span{
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.548);
+        }
+
+        .intro-text h2{
+            font-size: 24px;
+            color: #cccccc;
+            font-weight: 600;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p{
+            font-size: 16px;
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            max-width: 90%;
+        }
+
+        .intro-btn button{
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px 36px;
+            cursor: pointer;
+            background-color: black;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 1px 1px 15px 0 #d4af376b;
+            z-index: 2;
+        }
+
+        .intro-btn button span{
+            position: relative;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #070708;
+            transition: color 0.3s ease;
+        }
+
+        .intro-btn button span i{
+            transition: all 0.4s ease-in-out;
+        }
+
+        .left-layer{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #d4af37;
+            height: 100%;
+            width: 50%;
+            z-index: 3;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: left;
+        }
+
+        .right-layer{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #d4af37;
+            height: 100%;
+            width: 50%;
+            z-index: 4;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: right;
+        }
+
+        .intro-btn button:hover .left-layer{
+            transform: scaleX(1) rotate(-180deg);
+        }
+
+        .intro-btn button:hover .right-layer {
+            transform: scaleX(1) rotate(180deg);
+        }
+
+        .intro-btn button:hover span {
+            color: #d4af37;
+        }
+
+        .intro-btn button:hover span i{
+            transform: translateX(3px);
+        }
+
+        .profile-section{
+            color: white;
+            padding: 20px;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.5) 1px,transparent 1px);
+            background-size: 35px 35px;
+            background-color: #080808;
+        }
+
+        .profile-heading{
+            text-align: center;
+            margin-bottom: 75px;
+        }
+
+        .profile-heading span{
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 4px;
+        }
+
+        .profile-heading h2{
+            font-size: 45px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            margin-top: 12px;
+            text-shadow: 0 4px 0 #6e5720, 0 8px 15px #d4af3750;
+        }
+
+        .profile-content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 85px;
+        }
+
+        .profile-info{
+            width: 55%;
+        }
+
+        .gold-text{
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 4px;
+        }
+
+        .profile-info h2{
+            font-size: 38px;
+            line-height: 1.4;
+            margin: 15px 0 20px;
+        }
+
+        .profile-info h2 span{
+            color: #d4af37;
+        }
+
+        .profile-info > p{
+            color: #999;
+            font-size: 14px;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .project-section{
+            padding: 100px 4%;
+            background: radial-gradient(circle at 85% 20%,#1b1710 0%,#080808 55%);
+            color: white;
+        }
+
+        .project-heading{
+            text-align: center;
+            margin-bottom: 65px;
+        }
+
+        .project-heading span{
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 4px;
+        }
+
+        .project-heading h2{
+            font-size: 45px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            text-shadow: 0 4px 0 #6e5720, 0 8px 15px #d4af3750;
+            margin: 12px 0;
+        }
+
+        .project-heading p{
+            color: #999;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .project-container{
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .project-track{
+            display: flex;
+            width: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .project-card{
+            background-color: #0d0d0d;
+            border: 1px solid #ffffff15;
+            border-radius: 20px;
+            height: 100%;
+            width: 100%;
+            min-width: 100%;
+            overflow: hidden;
+        }
+
+        .project-img{
+            height: 450px;
+            width: 100%;
+            background: #151515;
+        }
+        
+
+        .project-img img{
+            height: 100%;
+            width: 100%;
+            object-position: 5% center;
+            object-fit: fill
+        }
+
+        .project-info{
+            padding: 25px;
+        }
+
+        .project-info span{
+            color: #d4af37;
+            font-size: 13px;
+            letter-spacing: 3px;
+        }
+
+        .project-info h3{
+            font-size: 20px;
+            margin: 12px 0;
+        }
+
+        .project-info p{
+            color: #999;
+            font-size: 14px;
+            width: 90%;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .language-section{
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .language-section span{
+            color: #d4af37;
+            font-size: 13px;
+            padding: 6px 12px;
+            background: #d4af370d;
+            border-radius: 20px;
+        }
+
+        .project-links{
+            display: flex;
+            gap: 25px;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project-links a{
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .project-links a:hover {
+            color: #d4af37;
+        }
+
+        .arrow-button{
+            position: absolute;
+            top: 50%;
+            left: 0;
+            padding: 0 20px;
+            z-index: 5;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            color: black;
+            transform: translateY(-50%);
+        }
+
+        .arrow-button i{
+            cursor: pointer;
+            font-size: 40px;
+            transition: 0.3s ease;
+        }
+
+        .arrow-button i:hover{
+            color: #d4af37;
+            transform: scale(1.15);
+        }
+
+        .contact-section{
+            padding: 100px 6%;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.5) 1px,transparent 1px);
+            background-size: 35px 35px;
+            background-color: #080808;
+            color: white;
+            position: relative;
+        }
+
+        .contact-heading{
+            text-align: center;
+            margin-bottom: 75px;
+        }
+
+        .contact-heading span{
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 4px;
+        }
+
+        .contact-heading h2{
+            font-size: 45px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            margin: 12px 0;
+            text-shadow: 0 4px 0 #6e5720, 0 8px 15px #d4af3750;
+        }
+
+        .contact-heading p{
+            color: #999;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .contact-container{
+            display: flex;
+            justify-content: space-between;
+            gap: 80px;        
+            margin: auto;
+            max-width: 1200px;
+        }
+
+        .contact-info h2{
+            font-size: 40px;
+            margin: 15px 0;
+        }
+
+        .contact-info h2 span{
+            color: #d4af37;
+        }
+
+        .contact-info > p{
+            color: #999;
+            font-size: 14px;
+            max-width: 450px;
+            line-height: 1.9;
+        }
+
+        .contact-detail{
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .contact-item{
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .contact-item i{
+            font-size: 23px;
+            color: #d4af37;
+            background: #d4af3715;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .contact-item h4{
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .social-contact{
+            display: flex;
+            gap: 18px;
+            margin-top: 40px;
+        }
+
+        .social-contact a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 45px;
+            font-size: 22px;
+            text-decoration: none;
+            color: #d4af37;
+            border: 1px solid #d4af3750;
+            border-radius: 15px;
+            transition: 0.5s ease;
+        }
+
+        .social-contact a:hover{
+            background: #d4af37;
+            color: black;
+            transform: translateY(-5px);
+        }
+
+        .contact-form{
+            flex: 1;
+            background: #101010;
+            border: 1px solid #d4af3730;
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .contact-form h3{
+            font-size: 23px;
+            margin-bottom: 25px;
+        }
+
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label{
+            color: #ccc;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .form-group label span{
+            color: rgba(255, 0, 0, 0.521);
+        }
+
+        .form-group input{
+            padding: 14px;
+            width: 100%;
+            font-size: 13px;
+            color: white;
+            outline: none;
+            background: #181818;
+            border: 1px solid #ffffff20;
+            border-radius: 8px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus{
+            border-color: #d4af37;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder{
+            color: #777;
+        }
+
+        .form-group textarea{
+            padding: 14px;
+            width: 100%;
+            font-size: 13px;
+            color: white;
+            outline: none;
+            background: #181818;
+            border: 1px solid #ffffff20;
+            border-radius: 8px;
+            resize: none;
+        }
+
+        .sbmt-button button{
+            padding: 14px;
+            width: 100%;
+            background: #d4af37;
+            color: #080808;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .contact-form button i{
+            margin-left: 8px;
+        }
+
+        .contact-form button:hover{
+            background: #f5d77b;
+            box-shadow: 0 0 18px #d4af3750;
+        }
+
+
+        .cursor{
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(180, 178, 178, 0.568);
+            border: 1px solid #d4af37;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            box-shadow: 0 0 15px 1px #d4af37;
+            z-index: 51;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.1s ease;
+            opacity: 0;
+        }
+
+        #IncorrectName{
+            font-size: 11px;
+            color: rgb(224, 20, 20);
+            display: none;
+        }
+
+        #IncorrectEmail{
+            font-size: 11px;
+            color: rgb(224, 20, 20);
+            display: none;
+        }
+
+
+        .confirmation{
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.9s ease;
+        }
+
+        .confirmation.active{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .confirmation-box{
+            background: #101010;
+            color: white;
+            max-width: 400px;
+            width: 100%;
+            padding: 40px 30px;
+            border: 1px solid #d4af3750;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 35px #d4af3720;
+            transition: all 0.9s ease;
+        }
+
+        .success-icon {
+            background: transparent;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 0;
+        }
+
+        .success-icon i {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #d4af3718;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            font-size: 35px;
+        }
+
+        .Success-tag {
+            color: #d4af37;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: transparent;
+            border: none;
+        }
+
+        .confirmation-box h2 {
+            color: #f5d77b;
+            font-size: 32px;
+            margin: 0 0 12px;
+        }
+
+        .success-heading {
+            color: #fff !important;
+            font-size: 14px !important;
+            margin: 0 0 15px !important;
+        }
+
+        .success-discription {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.8;
+            margin: 0 0 25px;
+        }
+
+        .success-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            color: #d4af37;
+            font-size: 11px;
+            margin-bottom: 25px;
+            white-space: nowrap;
+        }
+
+        .success-footer i {
+            font-size: 17px;
+        }
+
+        .confirmation-box > button{
+            width: 100%;
+            padding: 10px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            background: #f5d77b;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .confirmation-box > button i{
+            margin-left: 8px;
+        }
+
+
+
+        @media (max-width: 600px) {
+            
+            body{
+                padding-top: 110px;
+                overflow-x: hidden;
+            }
+
+            .cursor{
+                display: none;
+            }
+
+            header{
+                width: 100%;
+                flex-direction: column;
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .userName h3{
+                font-size: 17px;
+                letter-spacing: 2px;
+            }
+
+            .navlinks{
+                width: 100%;
+                margin: 0;
+                padding: 10px 8px;
+                justify-content: space-around;
+                gap: 5px;
+            }
+
+            .navlinks a{
+                font-size: 13px;
+                letter-spacing: 0;
+            }
+
+            .My-intro{
+                flex-direction: column;
+                gap: 30px;
+                padding: 35px 20px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .my-pfp{
+                width: 260px;
+                height: 260px;
+                margin: 0 auto;
+            }
+
+            .my-pfp img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .intro-text{
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .gearbox-container{
+                top: 55%;
+                right: 0;
+            }
+
+            .gearbox-container i{
+                right: 0;
+            }
+
+            .gear-large{
+                left: 0;
+                font-size: 95px;
+            }
+
+            .gear-small{
+                font-size: 60px;
+            }
+
+            .intro-text h1{
+                font-size: 32px;
+            }
+
+            .intro-text h2{
+                font-size: 19px;
+            }
+
+            .intro-text p{
+                max-width: 100%;
+                line-height: 1.8;
+                font-size: 15px;
+            }
+
+            .intro-btn{
+                display: flex;
+                justify-content: center;
+            }
+
+            .profile-section{
+                padding: 60px 18px;
+            }
+
+            .profile-heading{
+                margin-bottom: 40px;
+            }
+
+            .profile-heading span{
+                font-size: 10px;
+            }
+
+            .profile-heading h2{
+                font-size: 30px;
+                letter-spacing: 3px;
+            }
+
+            .profile-content{
+                flex-direction: column;
+                gap: 35px;
+                margin-top: 35px;
+            }
+
+            .profile-3d{
+                width: 100%;
+            }
+
+            .code-universe {
+                transform: scale(0.85);
+            }
+
+            .profile-info{
+                width: 100%;
+            }
+
+            .profile-info h2{
+                font-size: 27px;
+            }
+
+            .profile-info > p{
+                font-size: 13px;
+            }
+
+            .project-section{
+                padding: 65px 18px;
+            }
+
+            .project-heading{
+                margin-bottom: 35px;
+            }
+
+            .project-heading span{
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .project-heading h2{
+                font-size: 30px;
+                letter-spacing: 1px;
+            }
+
+            .project-heading p{
+                font-size: 14px;
+            }
+
+            .project-img{
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+
+            .project-img img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .project-info{
+                padding: 18px;
+            }
+
+            .project-info h3{
+                font-size: 17px;
+            }
+
+            .project-info p{
+                width: 100%;
+                font-size: 14px;
+            }
+
+            .language-section {
+                flex-wrap: wrap;
+                padding: 0 15px;
+                gap: 8px;
+            }
+
+            .language-section span {
+                font-size: 11px;
+            }
+
+            .project-links {
+                padding: 0 15px;
+            }
+
+            .arrow-button {
+                padding: 0 8px;
+            }
+
+            .arrow-button i {
+                font-size: 28px;
+            }
+
+            .contact-section{
+                padding: 65px 18px;
+            }
+
+            .contact-heading {
+                margin-bottom: 40px;
+            }
+
+            .contact-heading span{
+                font-size: 11px;
+            }
+
+            .contact-heading h2{
+                font-size: 30px;
+                letter-spacing: 2px;
+            }
+
+            .contact-heading p{
+                font-size: 14px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                gap: 35px;
+            }
+
+            .contact-info h2 {
+                font-size: 30px;
+            }
+
+            .contact-info > p {
+                font-size: 13px;
+            }
+
+            .contact-item {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .contact-item p {
+                font-size: 12px;
+            }
+
+            .contact-form {
+                width: 100%;
+                padding: 22px 16px;
+                box-sizing: border-box;
+            }
+
+            .contact-form h3 {
+                font-size: 20px;
+            }
+
+            .confirmation-box {
+                width: calc(100% - 30px);
+                padding: 30px 20px;
+                box-sizing: border-box;
+            }
+
+            .success-footer {
+                white-space: normal;
+                flex-wrap: wrap;
+            }
+
+            
+
+
+
+
+
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+
+    <!-- <div id="preloader">
+        <h2>Welcome to
+            <span>Ansh Sharma's</span>
+            Portfolio
+        </h2>
+
+        <div class="loading-spinner"></div>
+
+    </div> -->
+
+    <div class="cursor"></div>
+    
+    <header>
+
+        <div class="userName">
+           <h3 title="Web Developer"> ANSH SHARMA</h3>
+        </div>
+
+        <nav class="navlinks">
+            <a href="#home" class="active" id="homeScroll">Home</a>
+            <a href="#profile" id="profileScroll">About </a>
+            <a href="#projects" id="projectScroll">Projects</a>
+            <a href="#contact-us" id="contactScroll">Contact Us</a>
+        </nav>
+        
+    </header>
+
+    <section class="My-intro">
+
+        <div class="gearbox-container">
+            <i class="ri-settings-4-line gear-large"></i>
+            <i class="ri-settings-4-line gear-small"></i>
+        </div>
+
+        <div class="my-pfp">
+            <img src="anshu-pfp.jpeg" alt="Ansh Sharma PFP">
+        </div>
+
+        <div class="intro-text">
+
+            <h1>Hi, I'm <span>Ansh Sharma</span></h1>
+            <h2>Frontend & Backend Developer</h2>
+            <p>I specialize in building clean, elegant, and highly responsive web applications. Turning complex ideas into digital realities through clean code and modern design interfaces.</p>
+
+            <div class="intro-btn">
+
+                <button id="clickableBtn">
+                    <div class="left-layer"></div>
+                    <div class="right-layer"></div>
+
+                        <span>
+                            Hire me
+                            <i class="ri-arrow-right-up-line"></i>
+                        </span>
+                </button>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="profile-section">
+
+
+
+        <div class="profile-heading">
+            <span id="aboutScrolled">GET YOU KNOW ME</span>
+            <h2>ABOUT ME</h2>
+        </div>
+
+        <div class="profile-content">
+
+            <div class="profile-3d">
+                <div class="code-universe">
+
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+                    <div class="orbit orbit-three"></div>
+
+                    <div class="code-core">
+                        <i class="ri-code-s-slash-line"></i>
+                    </div>
+
+                    <span class="tech-node node-html">HTML</span>
+                    <span class="tech-node node-css">CSS</span>
+                    <span class="tech-node node-js">JS</span>
+                    <span class="tech-node node-react">REACT</span>
+
+                </div>
+            </div>
+
+            <div class="profile-info">
+                <span class="gold-text">WHO AM I?</span>
+                
+                <h2>Building Ideas Into
+                    <span>Digital Experiences.</span>
+                </h2>
+
+                <p>
+                    I'm Ansh Sharma, a BCA student and aspiring
+                    Full Stack Developer with a passion for
+                    technology, creativity, and web development.
+                </p>
+
+                <p>
+                    My journey started with HTML and CSS.
+                    Since then, I've been exploring JavaScript,
+                    React, and modern web technologies while
+                    building interactive and responsive projects.
+                </p>
+
+                <p>
+                    I believe in continuous learning, writing
+                    clean code, and creating digital experiences
+                    that combine functionality with elegant design.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+
+    <section class="project-section">
+
+        <div class="project-heading">
+            <span>MY RECENT WORK</span>
+            <h2>MY PROJECTS</h2>
+            <p id="projectScrolled">A showcase of things I've built with passion</p>
+        </div>
+
+        <div class="project-container">
+
+            <div class="project-track">
+
+                <div class="project-card">
+
+                    <div class="project-img">
+                        <img src="https://cdn.sanity.io/images/k0dlbavy/production/d2382cb76778d1502fb1d92d2dd3561a7802e66d-2800x1450.png?q=95&auto=format" alt="E-commerce">
+                    </div>
+
+                    <div class="project-info">
+                        <span>01 / PROJECT</span>
+                        <h3>Shopify/SaaS: Full-Stack E-Commerce Engine</h3>
+                        <p>Modern digital storefront with dynamic cart logic, Stripe checkout, and secure inventory sync</p>
+                    </div>
+
+                    <div class="language-section">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JAVASCRIPT</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#livedemo">Live Demo</a>
+                        <a href="https://github.com/ansh-jangra01" target="_blank">GitHub</a>
+                    </div>
+
+                </div>
+
+
+                <!-- 2  -->
+
+
+                <div class="project-card">
+
+                    <div class="project-img">
+                        <img src="https://cdn.sanity.io/images/k0dlbavy/production/d2382cb76778d1502fb1d92d2dd3561a7802e66d-2800x1450.png?q=95&auto=format" alt="E-commerce">
+                    </div>
+
+                    <div class="project-info">
+                        <span>01 / PROJECT</span>
+                        <h3>Shopify/SaaS: Full-Stack E-Commerce Engine</h3>
+                        <p>Modern digital storefront with dynamic cart logic, Stripe checkout, and secure inventory sync</p>
+                    </div>
+
+                    <div class="language-section">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JAVASCRIPT</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#livedemo">Live Demo</a>
+                        <a href="#github">GitHub</a>
+                    </div>
+
+                </div>
+
+
+                <!-- 3 -->
+
+                <div class="project-card">
+
+                    <div class="project-img">
+                        <img src="https://cdn.sanity.io/images/k0dlbavy/production/d2382cb76778d1502fb1d92d2dd3561a7802e66d-2800x1450.png?q=95&auto=format" alt="E-commerce">
+                    </div>
+
+                    <div class="project-info">
+                        <span>01 / PROJECT</span>
+                        <h3>Shopify/SaaS: Full-Stack E-Commerce Engine</h3>
+                        <p>Modern digital storefront with dynamic cart logic, Stripe checkout, and secure inventory sync</p>
+                    </div>
+
+                    <div class="language-section">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JAVASCRIPT</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#livedemo">Live Demo</a>
+                        <a href="#github">GitHub</a>
+                    </div>
+
+                </div>
+
+
+                <!-- 4  -->
+
+                <div class="project-card">
+
+                    <div class="project-img">
+                        <img src="https://cdn.sanity.io/images/k0dlbavy/production/d2382cb76778d1502fb1d92d2dd3561a7802e66d-2800x1450.png?q=95&auto=format" alt="E-commerce">
+                    </div>
+
+                    <div class="project-info">
+                        <span>01 / PROJECT</span>
+                        <h3>Shopify/SaaS: Full-Stack E-Commerce Engine</h3>
+                        <p>Modern digital storefront with dynamic cart logic, Stripe checkout, and secure inventory sync</p>
+                    </div>
+
+                    <div class="language-section">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JAVASCRIPT</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#livedemo">Live Demo</a>
+                        <a href="#github">GitHub</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="arrow-button">
+                <i class="ri-arrow-left-wide-fill"></i>
+                <i class="ri-arrow-right-wide-line"></i>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="contact-section">
+
+        <div class="contact-heading">
+            <span>LET'S CONNECT ME</span>
+            <h2 id="scrollthis">GET IN TOUCH</h2>
+            <P>Have a project in mind? Let's create something together.</P>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <span class="gold-text">
+                    CONTACT ME
+                </span>
+                
+                <h2>
+                    Let's Work
+                    <span>Together</span>
+                </h2>
+
+                <p>
+                    I'm always open to discussing new projects,
+                    creative ideas, and opportunities to be part
+                    of your vision.
+                </p>
+
+                <div class="contact-detail">
+
+                    <div class="contact-item">
+                        <i class="ri-mail-line"></i>
+                        <h4>Email</h4>
+                        <p>Jangraansh981@gmail.com</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="ri-map-pin-line"></i>
+                        <h4>Location</h4>
+                        <p>Najafgarh, New Delhi-110043, India</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="ri-global-line"></i>
+                        <h4>Availability</h4>
+                        <p>Open to opportunities</p>
+                    </div>
+
+                </div>
+
+                <div class="social-contact">
+                    <a href="https://github.com/ansh-jangra01" target="_blank">
+                        <i class="ri-github-fill"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/ansh-sharma-9b36b6414/" target="_blank">
+                        <i class="ri-linkedin-box-fill"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/?hl=en" target="_blank">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-form">
+
+                <h3>Send Me a Message</h3>
+
+                <form>
+
+                    <div class="form-group">
+                        <label>Your Name <span>*</span></label>
+                        <input type="text" placeholder="Enter Your Name" id="NameInput">
+                        <small id="IncorrectName">Please Enter Your Name More Than 3 Characters*</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Email <span>*</span></label>
+                        <input type="email" placeholder="Enter Your Email" id="EmailInput">
+                        <small id="IncorrectEmail">Please Enter a Valid Email*</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea id="MessageInput" rows="5" placeholder="Write Your Message">Hi Ansh Sharma, I'm interested in working with you. I'd like to discuss a potential opportunity or project. Please let me know when we can connect.</textarea>
+                    </div>
+
+                    <div class="sbmt-button">
+                        <button id="SubmitBtn">
+                            Submit
+                            <i class="ri-send-plane-fill"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <div class="confirmation">
+
+        <div class="confirmation-box">
+            <div class="success-icon">
+                <i class="ri-check-fill"></i>
+                <span class="Success-tag">MESSAGE SENT SUCCESSFULLY</span>
+            </div>
+
+            <h2>Thank You!</h2>
+
+            <p class="success-heading">Your Message Is Now In Safe Hands</p>
+            <p class="success-discription">I appreciate you reaching out. Your inquiry has been received successfully.
+            I'll review your message and get back to you as soon as possible.</p>
+
+            <div class="success-footer">
+                <i class="ri-mail-check-line"></i>
+                <span>Looking forward to connecting with you!</span>
+            </div>
+            
+
+            <button id="closeAlertbtn">
+                Back to Portfolio
+                <i class="ri-arrow-right-line"></i>
+            </button>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
