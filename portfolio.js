@@ -153,10 +153,7 @@ SubmitBtn.addEventListener("click", function(event){
         let email = EmailInput.value.trim();
         let message = MessageInput.value.trim();
 
-        let AlreadySavedMsg = `Hiring Request
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}`;
+        let AlreadySavedMsg = `Hiring Request,Name: ${name},Email: ${email},Message: ${message}`;
 
         let WatsaapURL = `https://wa.me/${919250782488}?text=${encodeURIComponent(AlreadySavedMsg)}`;
 
