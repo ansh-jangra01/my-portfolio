@@ -16,6 +16,12 @@ let EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 let SubmitBtn = document.querySelector("#SubmitBtn");
 
+let projectTrack = document.querySelector(".project-track");
+let projectcard = document.querySelectorAll(".project-card");
+let = arrowButton = document.querySelectorAll(".arrow-button i");
+let leftArrow = arrowButton[0];
+let rightArrow = arrowButton[1];
+let CurrentIndex = 0;
 
 
 
@@ -190,3 +196,48 @@ navlinks.forEach(function(a){
         a.classList.add("active");
     });
 });
+
+
+
+
+
+
+
+// arrow button working 
+
+leftArrow.addEventListener("click", function(){
+
+    if(CurrentIndex > 0){
+        CurrentIndex--;
+    }
+    else{
+        CurrentIndex = 3;
+    }
+
+    projectTrack.style.transform = `translateX(-${CurrentIndex * 100}%)`;
+});
+
+rightArrow.addEventListener("click", function(){
+    if(CurrentIndex < 3){
+        CurrentIndex++;
+    }
+    else{
+        CurrentIndex = 0;
+    }
+
+    projectTrack.style.transform = `translateX(-${CurrentIndex * 100}%)`;
+});
+
+
+// automatic slide 
+
+setInterval(function(){
+    if(CurrentIndex < 3){
+        CurrentIndex++;
+    }
+    else{
+        CurrentIndex = 0;
+    }
+
+    projectTrack.style.transform = `translateX(-${CurrentIndex * 100}%)`;
+},3000);
